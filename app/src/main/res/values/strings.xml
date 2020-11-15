@@ -14,4 +14,8 @@
     <string name="screen">screen</string>
     <string name="blink">blink</string>
     <string name="hold">hold</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="description_flash_mode">Using the flash of device to make lights. If the device can not use the flash, the white screen is used to replace for the flash</string>
+
 </resources>

@@ -45,11 +45,12 @@ public class LightActivity extends AppCompatActivity {
     private SeekBar sbTwinkleTime;
     private ImageView imvLightBuld;
 
+    private RadioButton rbFlash;
+
     private boolean IsSupportFlash = false;
     private boolean IsFlashlightOn = false;
     private Camera camera;
     private SharePreManager sharePreManager;
-
     private static final int SCREEN_LIGHT_REQUEST_CODE = 1;
     private static final int FLASH_MODE = 1;
     private static final int SCREEN_MODE = 2;
@@ -57,9 +58,7 @@ public class LightActivity extends AppCompatActivity {
     private static final int SOS_MODE = 4;
     private int currentRdbID = -1;
     private int delay = 100;
-
     private BlinkThread blinkThread;
-
     private Animation fadeIn;
     private Animation fadeOut;
 
@@ -71,13 +70,13 @@ public class LightActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_light);
 
         initView();
 
         // Change font
-//        final Typeface regular = Typeface.createFromAsset(getAssets(), "montserrat.ttf");
-//        FontHelper.changeFont((ViewGroup) findViewById(R.id.home), regular);
+        final Typeface regular = Typeface.createFromAsset(getAssets(), "montserrat.ttf");
+       // FontHelper.changeFont((ViewGroup) findViewById(R.id.home), regular);
 
         // Check flash support
         IsSupportFlash = checkFlashSupport();
@@ -386,12 +385,12 @@ public class LightActivity extends AppCompatActivity {
         return this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
 
-    private void initView() {
+    public void initView() {
         tvLightStatus =  findViewById(R.id.tvLightStatus);
         rtlTurnOnOffFlashlight =  findViewById(R.id.btnTurnOnOffLight);
 
         rbgMode =  findViewById(R.id.rbgMode);
-        RadioButton rbFlash = findViewById(R.id.rbFlash);
+        rbFlash = findViewById(R.id.rbFlash);
         RadioButton rbScreen =  findViewById(R.id.rbScreen);
         RadioButton rbTwinkle =  findViewById(R.id.rbTwinkle);
         RadioButton rbSOS =  findViewById(R.id.rbSOS);
@@ -402,7 +401,7 @@ public class LightActivity extends AppCompatActivity {
 
         imvLightBuld =  findViewById(R.id.imvLightBuld);
 
-//      rbFlash.setChecked(true);
+//        rbFlash.setChecked(true);
 //        currentRdbID = R.id.rbFlash;
 //        ((RadioButton) findViewById(currentRdbID)).setTextColor(Color.parseColor("#212121"));
     }

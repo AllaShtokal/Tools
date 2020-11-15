@@ -107,7 +107,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/toggle_selector_left_back"
-                android:button="@null"
                 android:gravity="center"
                 android:checked="true"
                 android:text="Flash"
