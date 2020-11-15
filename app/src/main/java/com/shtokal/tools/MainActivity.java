@@ -39,27 +39,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
-                if(email.isEmpty()){
+                if (email.isEmpty()) {
                     emailId.setError("Please enter email id");
                     emailId.requestFocus();
-                }
-                else  if(pwd.isEmpty()){
+                } else if (pwd.isEmpty()) {
                     password.setError("Please enter your password");
                     password.requestFocus();
-                }
-                else {
+                } else {
                     mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(MainActivity.this,
                             new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(!task.isSuccessful()){
-                                Toast.makeText(MainActivity.this,"SignUp Unsuccessful, Please Try Again",Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                startActivity(new Intent(MainActivity.this,HomeActivity.class));
-                            }
-                        }
-                    });
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (!task.isSuccessful()) {
+                                        Toast.makeText(MainActivity.this, "SignUp Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                    }
+                                }
+                            });
                 }
             }
         });
@@ -67,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         tvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,LoginActivity.class);
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         });
