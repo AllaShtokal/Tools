@@ -78,6 +78,22 @@
                     android:drawableLeft="@drawable/ic_lock"
                     android:hint="Password"
                     android:inputType="textPassword"/>
+                <TextView
+                    android:labelFor="@id/edit_text_password"
+                    android:text="password"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <EditText
+                    android:drawablePadding="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:id="@+id/edit_text_password2"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:hint="Password One More Time"
+                    android:inputType="textPassword"/>
 
 
                 <Button

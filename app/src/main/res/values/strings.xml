@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Tools</string>
     <string name="account_login">Account Login</string>
+    <string name="flash">flash</string>
+    <string name="longg">longg</string>
+    <string name="shortt">shortt</string>
+    <string name="toggle">Toggle</string>
+    <string name="sensitivity">Sensitivity</string>
+    <string name="frequency">frequency</string>
+    <string name="frequency_width">requency_width</string>
+    <string name="off">off</string>
+    <string name="on">on</string>
+    <string name="duration">duration</string>
+    <string name="screen">screen</string>
+    <string name="blink">blink</string>
+    <string name="hold">hold</string>
 </resources>
