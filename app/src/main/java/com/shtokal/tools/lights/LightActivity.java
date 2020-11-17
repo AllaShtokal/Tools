@@ -500,6 +500,7 @@ public class LightActivity extends AppCompatActivity {
     }
 
     public class BlinkThread extends Thread {
+        @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void run() {
 
@@ -507,20 +508,16 @@ public class LightActivity extends AppCompatActivity {
                 if (camera == null) {
                     TurnOnFlash();
                 }
+                CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+                String cameraId = cameraManager.getCameraIdList()[0];
 
-                Camera.Parameters parameters;
-                String FlashMode;
+                boolean flashMode=false;
+
                 while (BlinkRunning) {
-                    parameters = camera.getParameters();
-                    FlashMode = parameters.getFlashMode();
 
+                    cameraManager.setTorchMode(cameraId, flashMode);
+                    flashMode=!flashMode;
                     // Chuyen doi giua cac trang thai Flash
-                    if (FlashMode.equals(Camera.Parameters.FLASH_MODE_ON))
-                        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-                    else
-                        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
-
-                    camera.setParameters(parameters);
                     sleep(delay);
                 }
             } catch (Exception e) {
