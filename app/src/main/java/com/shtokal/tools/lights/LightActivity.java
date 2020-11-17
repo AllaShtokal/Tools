@@ -5,12 +5,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.hardware.Camera;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,6 +42,7 @@ import com.shtokal.tools.R;
 
 import java.text.DecimalFormat;
 
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class LightActivity extends AppCompatActivity {
     private TextView tvLightStatus;
     private RelativeLayout rtlTurnOnOffFlashlight;
@@ -349,8 +353,20 @@ public class LightActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void TurnOnFlash() {
-        if (camera == null)
+
+        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+
+        try {
+            String cameraId = cameraManager.getCameraIdList()[0];
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                cameraManager.setTorchMode(cameraId, true);
+            }
+        } catch (CameraAccessException e) {
+        }
+
+        /*if (camera == null)
             camera = Camera.open();
 
         if (camera != null) {
@@ -358,11 +374,19 @@ public class LightActivity extends AppCompatActivity {
             p.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
             camera.setParameters(p);
             camera.startPreview();
-        }
+        }*/
     }
 
     public void TurnOffFlash() {
+        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         try {
+            String cameraId = cameraManager.getCameraIdList()[0];
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                cameraManager.setTorchMode(cameraId, false);
+            }
+        } catch (CameraAccessException e) {
+        }
+        /*try {
             if (camera != null) {
                 camera.stopPreview();
                 camera.release();
@@ -370,7 +394,7 @@ public class LightActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             Log.e("TURN OFF CAMERA", e.getMessage());
-        }
+        }*/
     }
 
     public void TurnOffFlashlight() {
