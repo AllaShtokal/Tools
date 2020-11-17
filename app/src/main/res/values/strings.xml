@@ -17,5 +17,21 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="description_flash_mode">Using the flash of device to make lights. If the device can not use the flash, the white screen is used to replace for the flash</string>
-
+    <string name="vibrate">vibrate</string>
+    <string name="keepWake">Keep the screen always on</string>
+    <string name="alarmLimit">alert threshold</string>
+    <string name="alarmLimitSummary">When you customize the magnetic induction intensity, you show that metal is detected, and the metal frame phone can be appropriately enlarged</string>
+    <string name="alarmDialog">Enter a value (default 80, 0 is Shake Bar mode)</string>
+    <string name="vibrateSummary">Vibrate prompt when metal is detected</string>
+    <string name="keepWakeSummary">The screen does not turn off during probe</string>
+    <string name="softIntro">Software introduction</string>
+    <string name="softIntroSummary">Click to open the webpage, with a detailed introduction</string>
+    <string name="site">Technical station</string>
+    <string name="siteSummary">Summary</string>
+    <string name="source">source</string>
+    <string name="sourceSummary">star</string>
+    <string name="ai">AI assistant</string>
+    <string name="aiSummary">Another app</string>
+    <string name="joinQQGroup">Adding QQ Groups</string>
+    <string name="joinQQGroupSummary">GroupSummary</string>
 </resources>

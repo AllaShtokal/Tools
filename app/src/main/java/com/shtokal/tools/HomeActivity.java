@@ -41,11 +41,11 @@ public class HomeActivity extends AppCompatActivity {
         //list
         items = new ArrayList<>();
         items.add("Flashlight");
-        items.add("Second CardView Item");
-        items.add("Third CardView Item");
+        items.add("Metal Detector");
+      /*  items.add("Third CardView Item");
         items.add("Fourth CardView Item");
         items.add("Fifth CardView Item");
-        items.add("Sixth CardView Item");
+        items.add("Sixth CardView Item");*/
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

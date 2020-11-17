@@ -1,14 +1,17 @@
 package com.shtokal.tools.lights;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.hardware.Camera;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -51,6 +54,8 @@ public class LightActivity extends AppCompatActivity {
     private boolean IsFlashlightOn = false;
     private Camera camera;
     private SharePreManager sharePreManager;
+    private static final int MY_CAMERA_REQUEST_CODE = 100;
+
     private static final int SCREEN_LIGHT_REQUEST_CODE = 1;
     private static final int FLASH_MODE = 1;
     private static final int SCREEN_MODE = 2;
@@ -62,6 +67,7 @@ public class LightActivity extends AppCompatActivity {
     private Animation fadeIn;
     private Animation fadeOut;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,10 +100,8 @@ public class LightActivity extends AppCompatActivity {
         rtlTurnOnOffFlashlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom);
                 rtlTurnOnOffFlashlight.startAnimation(animation);
-
                 if (IsFlashlightOn) {
                     TurnOffFlashlight();
                 } else {
@@ -351,7 +355,7 @@ public class LightActivity extends AppCompatActivity {
 
         if (camera != null) {
             Camera.Parameters p = camera.getParameters();
-            p.setFlashMode(Camera.Parameters.FLASH_MODE_ON);
+            p.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
             camera.setParameters(p);
             camera.startPreview();
         }
@@ -381,7 +385,11 @@ public class LightActivity extends AppCompatActivity {
         imvLightBuld.setImageResource(R.drawable.light_on);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public boolean checkFlashSupport() {
+        if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
+        }
         return this.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
 
@@ -401,9 +409,9 @@ public class LightActivity extends AppCompatActivity {
 
         imvLightBuld =  findViewById(R.id.imvLightBuld);
 
-//        rbFlash.setChecked(true);
-//        currentRdbID = R.id.rbFlash;
-//        ((RadioButton) findViewById(currentRdbID)).setTextColor(Color.parseColor("#212121"));
+        rbFlash.setChecked(true);
+        currentRdbID = R.id.rbFlash;
+        ((RadioButton) findViewById(currentRdbID)).setTextColor(Color.parseColor("#212121"));
     }
 
     public void showCustomToast(String message) {
