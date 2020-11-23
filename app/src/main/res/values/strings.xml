@@ -35,4 +35,17 @@
     <string name="joinQQGroup">Adding QQ Groups</string>
     <string name="joinQQGroupSummary">GroupSummary</string>
     <string name="action_settings">Settings</string>
+    <string name="morning_greeting">Good morning!</string>
+    <string name="standard_greeting">Hello!</string>
+    <string name="afternoon_greeting">Good afternoon!</string>
+    <string name="night_greeting">Good evening!</string>
+    <string name="location_dialog_title">Allow \"Compass\" to access your location ?</string>
+    <string name="allow">Allow</string>
+    <string name="dont_allow">Don\'t allow</string>
+    <string name="allow_location_permission">Allowing access to your location help to improve application features.\n\nWe promise not to spam you, provide value and only use it for your own good.</string>
+    <string name="location_on_title">Location is provided !</string>
+    <string name="ok">Ok</string>
+    <string name="location_permission_allowed">If you want to disable location permission for \"Compass\", access to your application settings and disable it.</string>
+
+
 </resources>

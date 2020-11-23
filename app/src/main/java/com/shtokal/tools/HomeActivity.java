@@ -43,8 +43,8 @@ public class HomeActivity extends AppCompatActivity {
         items.add("Flashlight");
         items.add("Metal Detector");
         items.add("Level");
-        /*   items.add("Fourth CardView Item");
-        items.add("Fifth CardView Item");
+        items.add("Compass");
+           /*  items.add("Fifth CardView Item");
         items.add("Sixth CardView Item");*/
 
         recyclerView = findViewById(R.id.recyclerView);

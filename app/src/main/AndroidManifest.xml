@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shtokal.tools">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
@@ -21,12 +22,12 @@
         >
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
-        <activity android:name=".CompassActivity" />
         <activity android:name=".lights.WhiteActivity" />
         <activity android:name=".lights.LightActivity" />
         <activity android:name=".metalDetector.SettingsActivity" />
         <activity android:name=".metalDetector.MetalActivity" />
         <activity android:name=".level.LevelActivity" />
+        <activity android:name=".compass.solar.CompassActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Details">
