@@ -26,9 +26,7 @@
         <activity android:name=".lights.LightActivity" />
         <activity android:name=".metalDetector.SettingsActivity" />
         <activity android:name=".metalDetector.MetalActivity" />
-
-
-
+        <activity android:name=".level.LevelActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".Details">

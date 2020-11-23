@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shtokal.tools.level.LevelActivity;
 import com.shtokal.tools.lights.LightActivity;
 import com.shtokal.tools.metalDetector.MetalActivity;
 
@@ -48,9 +49,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView textTitle, textDescription;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             final int id =itemView.getId();
@@ -64,11 +63,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                             i = new Intent(v.getContext(), LightActivity.class); break;
                         case "Metal Detector":
                             i = new Intent(v.getContext(), MetalActivity.class); break;
+                        case "Level":
+                            i = new Intent(v.getContext(), LevelActivity.class); break;
                         default:
                             i = new Intent(v.getContext(), LightActivity.class); break;
-
                     }
-
                     v.getContext().startActivity(i);
                 }
             });

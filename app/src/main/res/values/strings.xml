@@ -34,4 +34,5 @@
     <string name="aiSummary">Another app</string>
     <string name="joinQQGroup">Adding QQ Groups</string>
     <string name="joinQQGroupSummary">GroupSummary</string>
+    <string name="action_settings">Settings</string>
 </resources>

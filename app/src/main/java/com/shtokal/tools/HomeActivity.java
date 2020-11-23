@@ -42,14 +42,14 @@ public class HomeActivity extends AppCompatActivity {
         items = new ArrayList<>();
         items.add("Flashlight");
         items.add("Metal Detector");
-      /*  items.add("Third CardView Item");
-        items.add("Fourth CardView Item");
+        items.add("Level");
+        /*   items.add("Fourth CardView Item");
         items.add("Fifth CardView Item");
         items.add("Sixth CardView Item");*/
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter(this,items);
+        adapter = new Adapter(this, items);
         recyclerView.setAdapter(adapter);
 
     }
