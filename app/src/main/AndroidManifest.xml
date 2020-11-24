@@ -30,6 +30,7 @@
         <activity android:name=".compass.solar.CompassActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".ruler.RulerActivity" />
         <activity android:name=".Details">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

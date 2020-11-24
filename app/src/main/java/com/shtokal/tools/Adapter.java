@@ -14,6 +14,7 @@ import com.shtokal.tools.compass.solar.CompassActivity;
 import com.shtokal.tools.level.LevelActivity;
 import com.shtokal.tools.lights.LightActivity;
 import com.shtokal.tools.metalDetector.MetalActivity;
+import com.shtokal.tools.ruler.RulerActivity;
 
 import java.util.List;
 
@@ -68,6 +69,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                             i = new Intent(v.getContext(), LevelActivity.class); break;
                         case "Compass":
                             i = new Intent(v.getContext(), CompassActivity.class); break;
+                        case "Ruler":
+                            i = new Intent(v.getContext(), RulerActivity.class); break;
                         default:
                             i = new Intent(v.getContext(), LightActivity.class); break;
                     }

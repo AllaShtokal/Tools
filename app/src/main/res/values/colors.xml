@@ -9,4 +9,9 @@
     <color name="black_overlay">#66000000</color>
     <color name="dot_dark">#fafafa</color>
     <color name="dot_light">#FBC02D</color>
+
+    <color name="colorRulerViewScale">#070705</color>
+    <color name="colorRulerViewPointer">#070705</color>
+    <color name="colorRulerViewLabel">#070705</color>
+    <color name="colorRulerViewBackground">#FAC331</color>
 </resources>

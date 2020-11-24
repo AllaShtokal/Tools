@@ -56,11 +56,11 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
         mMainView = findViewById(R.id.compass_layout);
         mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
 
-        mGreetingTextView = findViewById(R.id.tv_greeting);
-        mGreetingTextView.setText(R.string.standard_greeting);
+       // mGreetingTextView = findViewById(R.id.tv_greeting);
+       //mGreetingTextView.setText(R.string.standard_greeting);
         findViewById(R.id.iv_location).setOnClickListener(this);
 
-        mPositionTextView = findViewById(R.id.tv_position);
+     //   mPositionTextView = findViewById(R.id.tv_position);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey(BACKGROUND) && bundle.containsKey(GREETING_MESSAGE) && bundle.containsKey(LOCATION)) {
@@ -69,22 +69,22 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
 
             if (background != -1 && greetingMessage != -1) {
                 mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), background));
-                mGreetingTextView.setText(greetingMessage);
+               // mGreetingTextView.setText(greetingMessage);
 
                 Location location = bundle.getParcelable(LOCATION);
                 if (location != null) {
-                    mPositionTextView.setVisibility(View.VISIBLE);
-                    mPositionTextView.setText(AppUtils.convert(location.getLatitude(), location.getLongitude()));
+                   // mPositionTextView.setVisibility(View.VISIBLE);
+                   // mPositionTextView.setText(AppUtils.convert(location.getLatitude(), location.getLongitude()));
                 } else {
-                    mPositionTextView.setVisibility(View.GONE);
+                  //  mPositionTextView.setVisibility(View.GONE);
                 }
             } else {
                 mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
-                mGreetingTextView.setText(R.string.standard_greeting);
+               // mGreetingTextView.setText(R.string.standard_greeting);
             }
         } else {
             mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
-            mGreetingTextView.setText(R.string.standard_greeting);
+           // mGreetingTextView.setText(R.string.standard_greeting);
         }
     }
 
@@ -114,8 +114,8 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
                     public void onSuccess(Location location) {
                         if (location != null) {
                             updateDayState(location);
-                            mPositionTextView.setVisibility(View.VISIBLE);
-                            mPositionTextView.setText(AppUtils.convert(location.getLatitude(), location.getLongitude()));
+                          //  mPositionTextView.setVisibility(View.VISIBLE);
+                          //  mPositionTextView.setText(AppUtils.convert(location.getLatitude(), location.getLongitude()));
                         }
                     }
                 });}
@@ -129,9 +129,6 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    /**
-     * @param location
-     */
     private void updateDayState(Location location) {
 
         com.shtokal.tools.compass.solar.Location location1 =
@@ -159,19 +156,19 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
 
         if (current.after(midNight)) {
             mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_night));
-            mGreetingTextView.setText(R.string.night_greeting);
+           // mGreetingTextView.setText(R.string.night_greeting);
 
             if (current.after(sunrise)) {
                 mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_morning));
-                mGreetingTextView.setText(R.string.morning_greeting);
+               // mGreetingTextView.setText(R.string.morning_greeting);
 
                 if (current.after(noon)) {
                     mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_evening));
-                    mGreetingTextView.setText(R.string.afternoon_greeting);
+                 //   mGreetingTextView.setText(R.string.afternoon_greeting);
 
                     if (current.after(sunset)) {
                         mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_night));
-                        mGreetingTextView.setText(R.string.night_greeting);
+                     //   mGreetingTextView.setText(R.string.night_greeting);
                     }
                 }
             }
@@ -196,9 +193,6 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    /**
-     *
-     */
     private void askForLocationDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.location_dialog_title);

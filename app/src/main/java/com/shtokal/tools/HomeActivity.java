@@ -44,8 +44,8 @@ public class HomeActivity extends AppCompatActivity {
         items.add("Metal Detector");
         items.add("Level");
         items.add("Compass");
-           /*  items.add("Fifth CardView Item");
-        items.add("Sixth CardView Item");*/
+        items.add("Ruler");
+        /*   items.add("Sixth CardView Item");*/
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
