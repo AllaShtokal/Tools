@@ -11,9 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.shtokal.tools.cardiograph.HeartRateMonitor;
 import com.shtokal.tools.compass.solar.CompassActivity;
 import com.shtokal.tools.level.LevelActivity;
+import com.shtokal.tools.levell.view.Levell;
 import com.shtokal.tools.lights.LightActivity;
 import com.shtokal.tools.metalDetector.MetalActivity;
 import com.shtokal.tools.ruler.RulerActivity;
@@ -66,7 +68,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     Intent i;
                     switch (textTitle.getText().toString()) {
                         case "Metal Detector": i = new Intent(v.getContext(), MetalActivity.class); break;
-                        case "Level": i = new Intent(v.getContext(), LevelActivity.class); break;
+                        case "Level": i = new Intent(v.getContext(), Levell.class); break;
                         case "Compass": i = new Intent(v.getContext(), CompassActivity.class); break;
                         case "Ruler": i = new Intent(v.getContext(), RulerActivity.class); break;
                         case "Cardiograph": i = new Intent(v.getContext(), HeartRateMonitor.class); break;

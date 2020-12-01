@@ -31,6 +31,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".ruler.RulerActivity" />
+        <activity android:name=".levell.view.Levell" />
+        <activity android:name=".levell.view.SettingsActivity" />
         <activity android:name=".cardiograph.HeartRateMonitor" />
 
         <activity android:name=".Details">
