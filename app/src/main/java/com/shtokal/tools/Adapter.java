@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.shtokal.tools.cardiograph.HeartRateMonitor;
 import com.shtokal.tools.compass.solar.CompassActivity;
 import com.shtokal.tools.level.LevelActivity;
 import com.shtokal.tools.lights.LightActivity;
@@ -21,9 +23,9 @@ import java.util.List;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private LayoutInflater layoutInflater;
-    private List<String> data;
+    private List<DetailsData> data;
 
-    Adapter(Context context, List<String> data) {
+    Adapter(Context context, List<DetailsData> data) {
         this.layoutInflater = LayoutInflater.from(context);
         this.data = data;
     }
@@ -39,8 +41,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
         // bind the textview with data received
-        String title = data.get(i);
-        viewHolder.textTitle.setText(title);
+        DetailsData item = data.get(i);
+        viewHolder.textTitle.setText(item.getTextTitle());
+        viewHolder.textDescription.setText(item.getTextDescription());
+        viewHolder.imageView.setImageResource(item.getImage());
+
         // similarly you can set new image for each card and descriptions
 
     }
@@ -52,33 +57,27 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textTitle, textDescription;
+        ImageView imageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            final int id =itemView.getId();
-            System.out.println();
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i;
                     switch (textTitle.getText().toString()) {
-                        case "Flashlight":
-                            i = new Intent(v.getContext(), LightActivity.class); break;
-                        case "Metal Detector":
-                            i = new Intent(v.getContext(), MetalActivity.class); break;
-                        case "Level":
-                            i = new Intent(v.getContext(), LevelActivity.class); break;
-                        case "Compass":
-                            i = new Intent(v.getContext(), CompassActivity.class); break;
-                        case "Ruler":
-                            i = new Intent(v.getContext(), RulerActivity.class); break;
-                        default:
-                            i = new Intent(v.getContext(), LightActivity.class); break;
+                        case "Metal Detector": i = new Intent(v.getContext(), MetalActivity.class); break;
+                        case "Level": i = new Intent(v.getContext(), LevelActivity.class); break;
+                        case "Compass": i = new Intent(v.getContext(), CompassActivity.class); break;
+                        case "Ruler": i = new Intent(v.getContext(), RulerActivity.class); break;
+                        case "Cardiograph": i = new Intent(v.getContext(), HeartRateMonitor.class); break;
+                        default: i = new Intent(v.getContext(), LightActivity.class); break;
                     }
                     v.getContext().startActivity(i);
                 }
             });
             textTitle = itemView.findViewById(R.id.textTitle);
             textDescription = itemView.findViewById(R.id.textDesc);
+            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 }

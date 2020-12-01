@@ -182,9 +182,9 @@ public class LightActivity extends AppCompatActivity {
         // Show / hide twinkle setting
         showHideTwinkleSetting(flashMode);
 
-        // Check flash support && flashlight status
+        // Check flash support && flashlight_icon status
         if (!IsFlashlightOn) {
-            showCustomToast("Please turn on flashlight before");
+            showCustomToast("Please turn on flashlight_icon before");
             return;
         }
 
@@ -472,7 +472,7 @@ public class LightActivity extends AppCompatActivity {
             // Show dialog
             new AlertDialog.Builder(this)
                     .setTitle("Warning")
-                    .setMessage("If you press back button, a flashlight will be off. Press the home button to make flashlight is on")
+                    .setMessage("If you press back button, a flashlight_icon will be off. Press the home button to make flashlight_icon is on")
                     .setPositiveButton("DISCARD", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             sharePreManager.setRemindValue(sharePreManager.getRemindValue() + 1);

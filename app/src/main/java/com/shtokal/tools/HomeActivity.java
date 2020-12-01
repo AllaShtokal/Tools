@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -19,7 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     Adapter adapter;
-    ArrayList<String> items;
+    ArrayList<DetailsData> items;
     RecyclerView recyclerView;
 
     @Override
@@ -40,11 +41,12 @@ public class HomeActivity extends AppCompatActivity {
 
         //list
         items = new ArrayList<>();
-        items.add("Flashlight");
-        items.add("Metal Detector");
-        items.add("Level");
-        items.add("Compass");
-        items.add("Ruler");
+        items.add(new DetailsData("Flashlight", "Super duper Flashlight", R.drawable.flashlight_icon));
+        items.add(new DetailsData("Metal Detector", "Super duper Metal Detector", R.drawable.metal_detector));
+        items.add(new DetailsData("Level", "Super duper Level", R.drawable.level_icon));
+        items.add(new DetailsData("Compass", "Super duper Compass", R.drawable.compass_icon));
+        items.add(new DetailsData("Ruler", "Super duper Ruler", R.drawable.ruler_icon));
+        items.add(new DetailsData("Cardiograph", "Cardiograph", R.drawable.ruler_icon));
         /*   items.add("Sixth CardView Item");*/
 
         recyclerView = findViewById(R.id.recyclerView);
