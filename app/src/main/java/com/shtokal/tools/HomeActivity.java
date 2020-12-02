@@ -41,12 +41,12 @@ public class HomeActivity extends AppCompatActivity {
 
         //list
         items = new ArrayList<>();
-        items.add(new DetailsData("Flashlight", "Super duper Flashlight", R.drawable.flashlight_icon));
-        items.add(new DetailsData("Metal Detector", "Super duper Metal Detector", R.drawable.metal_detector));
-        items.add(new DetailsData("Level", "Super duper Level", R.drawable.level_icon));
-        items.add(new DetailsData("Compass", "Super duper Compass", R.drawable.compass_icon));
-        items.add(new DetailsData("Ruler", "Super duper Ruler", R.drawable.ruler_icon));
-        items.add(new DetailsData("Cardiograph", "Cardiograph", R.drawable.ruler_icon));
+        items.add(new DetailsData("Flashlight", "3-modes flashlight", R.drawable.flashlight_icon));
+        items.add(new DetailsData("Metal Detector", "Used for metal detection", R.drawable.metal_detector));
+        items.add(new DetailsData("Level", "Measurement of the level ", R.drawable.level_icon));
+        items.add(new DetailsData("Compass", "Used for navigation and orientation", R.drawable.compass_icon));
+        items.add(new DetailsData("Ruler", "Calculation of the length", R.drawable.ruler_icon));
+        items.add(new DetailsData("Cardiograph", "Heart rate monitor", R.drawable.cardiograph));
         /*   items.add("Sixth CardView Item");*/
 
         recyclerView = findViewById(R.id.recyclerView);

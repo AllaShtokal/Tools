@@ -26,15 +26,15 @@ public class HeartbeatPic extends View {
     public HeartbeatPic(Context context, AttributeSet attr) {
         super(context, attr);
 
-        greenBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.green_icon);
-        redBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.red_icon);
+        greenBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.q);
+        redBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.q2);
     }
 
     public HeartbeatPic(Context context) {
         super(context);
 
-        greenBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.green_icon);
-        redBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.red_icon);
+        greenBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.q);
+        redBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.q2);
     }
 
     @Override

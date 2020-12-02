@@ -31,10 +31,10 @@ public class HeartRateMonitor extends Activity {
     private static View image = null;
     @SuppressLint("StaticFieldLeak")
     private static TextView text = null;
-    @SuppressLint("StaticFieldLeak")
-    private static TextView imgavgtxt = null;
-    @SuppressLint("StaticFieldLeak")
-    private static TextView rollavgtxt = null;
+   // @SuppressLint("StaticFieldLeak")
+   // private static TextView imgavgtxt = null;
+   // @SuppressLint("StaticFieldLeak")
+   // private static TextView rollavgtxt = null;
 
     private static WakeLock wakeLock = null;
 
@@ -67,15 +67,16 @@ public class HeartRateMonitor extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardiograph);
 
-        SurfaceView preview = (SurfaceView) findViewById(R.id.preview);
+       SurfaceView preview = (SurfaceView) findViewById(R.id.preview);
+
         previewHolder = preview.getHolder();
         previewHolder.addCallback(surfaceCallback);
         previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
         image = findViewById(R.id.image);
         text = findViewById(R.id.text);
-        imgavgtxt = findViewById(R.id.img_avg_text);
-        rollavgtxt = findViewById(R.id.rollavg_text);
+      //  imgavgtxt = findViewById(R.id.img_avg_text);
+      //  rollavgtxt = findViewById(R.id.rollavg_text);
 
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
@@ -101,6 +102,7 @@ public class HeartRateMonitor extends Activity {
         camera = Camera.open();
 
         startTime = System.currentTimeMillis();
+
     }
 
     /**
@@ -153,8 +155,8 @@ public class HeartRateMonitor extends Activity {
             int rollingAverage = (averageArrayCnt > 0) ? (averageArrayAvg / averageArrayCnt) : 0;
             TYPE newType = currentType;
 
-            imgavgtxt.setText("image average:"+ Integer.toString(imgAvg));
-            rollavgtxt.setText("rolling average:"+ Integer.toString(rollingAverage));
+           // imgavgtxt.setText("image average:"+ Integer.toString(imgAvg));
+          //  rollavgtxt.setText("rolling average:"+ Integer.toString(rollingAverage));
             if (imgAvg < rollingAverage) {
                 newType = TYPE.RED;
                 if (newType != currentType) {
@@ -203,7 +205,7 @@ public class HeartRateMonitor extends Activity {
                     }
                 }
                 int beatsAvg = (beatsArrayAvg / beatsArrayCnt);
-                text.setText(String.valueOf(beatsAvg)+" bpm");
+                text.setText(String.valueOf(beatsAvg)+" beat per minute");
                 startTime = System.currentTimeMillis();
                 beats = 0;
             }
