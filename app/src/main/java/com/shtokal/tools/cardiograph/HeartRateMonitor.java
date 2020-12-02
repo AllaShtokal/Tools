@@ -58,9 +58,6 @@ public class HeartRateMonitor extends Activity {
     private static double beats = 0;
     private static long startTime = 0;
 
-    /**
-     * {@inheritDoc}
-     */
     @SuppressLint("InvalidWakeLockTag")
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,17 +79,13 @@ public class HeartRateMonitor extends Activity {
         wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
     @Override
     public void onResume() {
         super.onResume();
@@ -105,9 +98,7 @@ public class HeartRateMonitor extends Activity {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
     @Override
     public void onPause() {
         super.onPause();
@@ -215,9 +206,7 @@ public class HeartRateMonitor extends Activity {
 
     private static SurfaceHolder.Callback surfaceCallback = new SurfaceHolder.Callback() {
 
-        /**
-         * {@inheritDoc}
-         */
+
         @Override
         public void surfaceCreated(SurfaceHolder holder) {
             try {
@@ -228,9 +217,6 @@ public class HeartRateMonitor extends Activity {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             Camera.Parameters parameters = camera.getParameters();
@@ -244,9 +230,6 @@ public class HeartRateMonitor extends Activity {
             camera.startPreview();
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void surfaceDestroyed(SurfaceHolder holder) {
             // Ignore

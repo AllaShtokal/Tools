@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -46,8 +46,9 @@ public class HomeActivity extends AppCompatActivity {
         items.add(new DetailsData("Level", "Measurement of the level ", R.drawable.level_icon));
         items.add(new DetailsData("Compass", "Used for navigation and orientation", R.drawable.compass_icon));
         items.add(new DetailsData("Ruler", "Calculation of the length", R.drawable.ruler_icon));
+        items.add(new DetailsData("QR code scaner", "QR code scaner", R.drawable.qr_icon));
         items.add(new DetailsData("Cardiograph", "Heart rate monitor", R.drawable.cardiograph));
-        /*   items.add("Sixth CardView Item");*/
+
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

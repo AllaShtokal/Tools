@@ -45,6 +45,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.1.0'
     wearApp project(':app')
     implementation 'com.google.android.gms:play-services-wearable:+'
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+    implementation 'com.karumi:dexter:5.0.0'
 
 
 }
