@@ -47,6 +47,9 @@ dependencies {
     implementation 'com.google.android.gms:play-services-wearable:+'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
     implementation 'com.karumi:dexter:5.0.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
+    implementation 'com.github.neopixl:PixlUI:v1.1.0'
+    implementation 'com.github.markushi:circlebutton:1.1'
 
 
 }

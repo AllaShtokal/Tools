@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shtokal.tools">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -35,6 +37,8 @@
         <activity android:name=".levell.view.SettingsActivity" />
         <activity android:name=".cardiograph.HeartRateMonitor" />
         <activity android:name=".qrcodescaner.QrscanerActivity" />
+        <activity android:name=".soundmeter.SoundActivity" />
+        <activity android:name=".acceleromter.Accelerometer" />
 
         <activity android:name=".Details">
             <meta-data
