@@ -28,7 +28,6 @@
         <activity android:name=".lights.LightActivity" />
         <activity android:name=".metalDetector.SettingsActivity" />
         <activity android:name=".metalDetector.MetalActivity" />
-        <activity android:name=".level.LevelActivity" />
         <activity android:name=".compass.solar.CompassActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
@@ -39,6 +38,7 @@
         <activity android:name=".qrcodescaner.QrscanerActivity" />
         <activity android:name=".soundmeter.SoundActivity" />
         <activity android:name=".acceleromter.Accelerometer" />
+        <activity android:name=".vibration.VibrationMeterActivity" />
 
         <activity android:name=".Details">
             <meta-data

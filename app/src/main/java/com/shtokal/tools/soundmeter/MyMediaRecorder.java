@@ -5,9 +5,6 @@ import android.media.MediaRecorder;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by bodekjan on 2016/8/8.
- */
 public class MyMediaRecorder {
     public File myRecAudioFile ;
     private MediaRecorder mMediaRecorder ;
@@ -34,10 +31,6 @@ public class MyMediaRecorder {
         this.myRecAudioFile = myRecAudioFile;
     }
 
-    /**
-     * Recording
-     * @return Whether to start recording successfully
-     */
     public boolean startRecorder(){
         if (myRecAudioFile == null) {
             return false;

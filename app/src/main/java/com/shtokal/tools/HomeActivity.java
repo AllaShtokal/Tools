@@ -3,17 +3,12 @@ package com.shtokal.tools;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import android.widget.Button;
-
 import com.google.firebase.auth.FirebaseAuth;
-
 import java.util.ArrayList;
-
 public class HomeActivity extends AppCompatActivity {
     Button btnLogout;
     FirebaseAuth mFirebaseAuth;
@@ -50,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         items.add(new DetailsData("Cardiograph", "Heart rate monitor", R.drawable.cardiograph));
         items.add(new DetailsData("Sound Meter", "Level of sound", R.drawable.sound));
         items.add(new DetailsData("Accelerometer", "Accelerometer", R.drawable.accelerometer_icon));
+        items.add(new DetailsData("Vibration Meter", "Measurement of vibration", R.drawable.accelerometer_icon));
 
 
         recyclerView = findViewById(R.id.recyclerView);

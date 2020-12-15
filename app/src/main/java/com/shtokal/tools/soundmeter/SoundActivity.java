@@ -67,7 +67,7 @@ public class SoundActivity extends Activity {
                     initChart();
                     return;
                 }
-                speedometer.refresh();
+              //  speedometer.refresh();
                 minVal.setText(df1.format(World.minDB));
                 mmVal.setText(df1.format((World.minDB+World.maxDB)/2));
                 maxVal.setText(df1.format(World.maxDB));
@@ -100,27 +100,27 @@ public class SoundActivity extends Activity {
             window.setNavigationBarColor(Color.TRANSPARENT);
         }
         setContentView(R.layout.activity_sound);
-        tf= Typeface.createFromAsset(this.getAssets(), "fonts/Let_s go Digital Regular.ttf");
+        tf= Typeface.createFromAsset(this.getAssets(), "fonts/ALKATIP.TTF");
         minVal=(TextView)findViewById(R.id.minval);minVal.setTypeface(tf);
         mmVal=(TextView)findViewById(R.id.mmval);mmVal.setTypeface(tf);
         maxVal=(TextView)findViewById(R.id.maxval);maxVal.setTypeface(tf);
         curVal=(TextView)findViewById(R.id.curval);curVal.setTypeface(tf);
-        infoButton=(ImageButton)findViewById(R.id.infobutton);
-        infoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                InfoDialog.Builder builder = new InfoDialog.Builder(SoundActivity.this);
-                builder.setMessage(getString(R.string.activity_infobull));
-                builder.setTitle(getString(R.string.activity_infotitle));
-                builder.setNegativeButton(getString(R.string.activity_infobutton),
-                        new android.content.DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                builder.create().show();
-            }
-        });
+        //infoButton=(ImageButton)findViewById(R.id.infobutton);
+//        infoButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                InfoDialog.Builder builder = new InfoDialog.Builder(SoundActivity.this);
+//                builder.setMessage(getString(R.string.activity_infobull));
+//                builder.setTitle(getString(R.string.activity_infotitle));
+//                builder.setNegativeButton(getString(R.string.activity_infobutton),
+//                        new android.content.DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        });
+//                builder.create().show();
+//            }
+//        });
         refreshButton=(ImageButton)findViewById(R.id.refreshbutton);
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +134,7 @@ public class SoundActivity extends Activity {
             }
         });
 
-        speedometer=(Speedometer)findViewById(R.id.speed);
+      //speedometer=(Speedometer)findViewById(R.id.speed);
         mRecorder = new MyMediaRecorder();
     }
 
@@ -272,10 +272,7 @@ public class SoundActivity extends Activity {
         });
         thread.start();
     }
-    /**
-     * Start recording
-     * @param fFile
-     */
+
     public void startRecord(File fFile){
         try{
             mRecorder.setMyRecAudioFile(fFile);
@@ -301,9 +298,7 @@ public class SoundActivity extends Activity {
         bListener = true;
     }
 
-    /**
-     * Stop recording
-     */
+
     @Override
     protected void onPause() {
         super.onPause();

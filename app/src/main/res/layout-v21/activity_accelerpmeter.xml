@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="20dip"
-        android:text="Shaker Demo"
+        android:text="Accelerometer"
         android:textSize="16sp"
         android:textStyle="bold" />
 
