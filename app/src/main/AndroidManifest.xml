@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
-    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
@@ -37,7 +37,6 @@
         <activity android:name=".cardiograph.HeartRateMonitor" />
         <activity android:name=".qrcodescaner.QrscanerActivity" />
         <activity android:name=".soundmeter.SoundActivity" />
-        <activity android:name=".acceleromter.Accelerometer" />
         <activity android:name=".vibration.VibrationMeterActivity" />
 
         <activity android:name=".Details">

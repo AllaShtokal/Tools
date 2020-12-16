@@ -8,7 +8,6 @@ import android.location.Location;
 import android.os.Bundle;
 
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,9 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.shtokal.tools.MainActivity;
 import com.shtokal.tools.R;
-import com.shtokal.tools.compass.AppUtils;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -26,8 +23,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class CompassActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private final static String TAG = MainActivity.class.getSimpleName();
 
     private final static int REQUEST_CHECK_GOOGLE_SETTINGS = 0x99;
     public static final String BACKGROUND = "background";
@@ -38,9 +33,6 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     private View mMainView;
-    private TextView mGreetingTextView;
-
-    private TextView mPositionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +41,6 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
         initializeView();
     }
 
-    /**
-     *
-     */
     private void initializeView() {
         mMainView = findViewById(R.id.compass_layout);
         mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
@@ -88,9 +77,6 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    /**
-     *
-     */
 
     @SuppressLint("MissingPermission")
     private void initialize() {
@@ -216,9 +202,6 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
         builder.show();
     }
 
-    /**
-     *
-     */
     private void locationProvidedDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.location_on_title);

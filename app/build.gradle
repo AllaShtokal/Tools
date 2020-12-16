@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "com.shtokal.tools"
-        minSdkVersion 19
-        targetSdkVersion 29
+        minSdkVersion 21
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -44,7 +44,7 @@ dependencies {
     implementation 'com.github.arbelkilani:Compass-View:v1.1.1'
     implementation 'com.google.android.gms:play-services-location:17.1.0'
     wearApp project(':app')
-    implementation 'com.google.android.gms:play-services-wearable:+'
+    implementation 'com.google.android.gms:play-services-wearable:17.0.0'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
     implementation 'com.karumi:dexter:5.0.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'

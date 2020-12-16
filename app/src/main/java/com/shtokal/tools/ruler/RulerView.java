@@ -45,9 +45,7 @@ public class RulerView extends View {
     private float pointerStrokeWidth;
     private int pointerColor;
 
-    /**
-     * Creates a new RulerView.
-     */
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public RulerView(Context context) {
         this(context, null);
@@ -91,7 +89,7 @@ public class RulerView extends View {
 
         dm = getResources().getDisplayMetrics();
         unit = new Unit(dm.ydpi);
-        unit.setType(a.getInt(R.styleable.RulerView_unit, 0));
+        unit.setType(a.getInt(R.styleable.RulerView_unit, 1));
 
         a.recycle();
 
@@ -278,7 +276,7 @@ public class RulerView extends View {
         public static final int INCH = 0;
         public static final int CM = 1;
 
-        private int type = INCH;
+        private int type = CM;
         private float dpi;
 
         Unit(float dpi) {

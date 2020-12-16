@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.shtokal.tools.acceleromter.Accelerometer;
 import com.shtokal.tools.cardiograph.HeartRateMonitor;
 import com.shtokal.tools.compass.solar.CompassActivity;
 import com.shtokal.tools.levell.view.Levell;
@@ -77,7 +76,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                         case "Cardiograph": i = new Intent(v.getContext(), HeartRateMonitor.class); break;
                         case "QR code scaner": i = new Intent(v.getContext(), QrscanerActivity.class); break;
                         case "Sound Meter": i = new Intent(v.getContext(), SoundActivity.class); break;
-                        case "Accelerometer": i = new Intent(v.getContext(), Accelerometer.class); break;
+
                         case "Vibration Meter": i = new Intent(v.getContext(), VibrationMeterActivity.class); break;
                         default: i = new Intent(v.getContext(), LightActivity.class); break;
                     }

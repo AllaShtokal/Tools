@@ -31,13 +31,7 @@ public class HeartRateMonitor extends Activity {
     private static View image = null;
     @SuppressLint("StaticFieldLeak")
     private static TextView text = null;
-   // @SuppressLint("StaticFieldLeak")
-   // private static TextView imgavgtxt = null;
-   // @SuppressLint("StaticFieldLeak")
-   // private static TextView rollavgtxt = null;
-
     private static WakeLock wakeLock = null;
-
     private static int averageIndex = 0;
     private static final int averageArraySize = 4;
     private static final int[] averageArray = new int[averageArraySize];
@@ -72,9 +66,6 @@ public class HeartRateMonitor extends Activity {
 
         image = findViewById(R.id.image);
         text = findViewById(R.id.text);
-      //  imgavgtxt = findViewById(R.id.img_avg_text);
-      //  rollavgtxt = findViewById(R.id.rollavg_text);
-
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
     }
@@ -146,8 +137,6 @@ public class HeartRateMonitor extends Activity {
             int rollingAverage = (averageArrayCnt > 0) ? (averageArrayAvg / averageArrayCnt) : 0;
             TYPE newType = currentType;
 
-           // imgavgtxt.setText("image average:"+ Integer.toString(imgAvg));
-          //  rollavgtxt.setText("rolling average:"+ Integer.toString(rollingAverage));
             if (imgAvg < rollingAverage) {
                 newType = TYPE.RED;
                 if (newType != currentType) {
@@ -179,9 +168,6 @@ public class HeartRateMonitor extends Activity {
                     processing.set(false);
                     return;
                 }
-
-                // Log.d(TAG,
-                // "totalTimeInSecs="+totalTimeInSecs+" beats="+beats);
 
                 if (beatsIndex == beatsArraySize) beatsIndex = 0;
                 beatsArray[beatsIndex] = dpm;
