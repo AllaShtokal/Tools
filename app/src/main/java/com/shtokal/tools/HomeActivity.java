@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         items.add(new DetailsData("QR code scaner", "QR code scaner", R.drawable.qr_icon));
         items.add(new DetailsData("Cardiograph", "Heart rate monitor", R.drawable.cardiograph));
         items.add(new DetailsData("Sound Meter", "Level of sound", R.drawable.sound));
-        items.add(new DetailsData("Accelerometer", "Accelerometer", R.drawable.accelerometer_icon));
+      //  items.add(new DetailsData("Accelerometer", "Accelerometer", R.drawable.accelerometer_icon));
         items.add(new DetailsData("Vibration Meter", "Measurement of vibration", R.drawable.accelerometer_icon));
 
 

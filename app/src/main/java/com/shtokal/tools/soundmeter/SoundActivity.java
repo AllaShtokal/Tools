@@ -38,7 +38,7 @@ public class SoundActivity extends Activity {
     Speedometer speedometer;
     public static Typeface tf;
     ImageButton infoButton;
-    ImageButton refreshButton;
+   // ImageButton refreshButton;
     LineChart mChart;
     TextView minVal;
     TextView maxVal;
@@ -121,18 +121,18 @@ public class SoundActivity extends Activity {
 //                builder.create().show();
 //            }
 //        });
-        refreshButton=(ImageButton)findViewById(R.id.refreshbutton);
-        refreshButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refreshed=true;
-                World.minDB=100;
-                World.dbCount=0;
-                World.lastDbCount=0;
-                World.maxDB=0;
-                initChart();
-            }
-        });
+       // refreshButton=(ImageButton)findViewById(R.id.refreshbutton);
+//        refreshButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                refreshed=true;
+//                World.minDB=100;
+//                World.dbCount=0;
+//                World.lastDbCount=0;
+//                World.maxDB=0;
+//                initChart();
+//            }
+//        });
 
       //speedometer=(Speedometer)findViewById(R.id.speed);
         mRecorder = new MyMediaRecorder();
@@ -204,20 +204,20 @@ public class SoundActivity extends Activity {
             set1.setValueTypeface(tf);
             set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             set1.setCubicIntensity(0.02f);
-            set1.setDrawFilled(true);
+//            set1.setDrawFilled(true);
             set1.setDrawCircles(false);
             set1.setCircleColor(Color.GREEN);
             set1.setHighLightColor(Color.rgb(244, 117, 117));
             set1.setColor(Color.GREEN);
-            set1.setFillColor(Color.GREEN);
-            set1.setFillAlpha(100);
+//            set1.setFillColor(Color.GREEN);
+//            set1.setFillAlpha(100);
             set1.setDrawHorizontalHighlightIndicator(false);
-            set1.setFillFormatter(new FillFormatter() {
-                @Override
-                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
-                    return -10;
-                }
-            });
+//            set1.setFillFormatter(new FillFormatter() {
+//                @Override
+//                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+//                    return -10;
+//                }
+//            });
             LineData data;
             if (mChart.getData() != null &&
                     mChart.getData().getDataSetCount() > 0) {

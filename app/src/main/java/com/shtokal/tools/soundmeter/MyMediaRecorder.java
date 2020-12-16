@@ -1,5 +1,4 @@
 package com.shtokal.tools.soundmeter;
-
 import android.media.MediaRecorder;
 
 import java.io.File;
@@ -22,15 +21,12 @@ public class MyMediaRecorder {
             return 5;
         }
     }
-
     public File getMyRecAudioFile() {
         return myRecAudioFile;
     }
-
     public void setMyRecAudioFile(File myRecAudioFile) {
         this.myRecAudioFile = myRecAudioFile;
     }
-
     public boolean startRecorder(){
         if (myRecAudioFile == null) {
             return false;
@@ -61,9 +57,6 @@ public class MyMediaRecorder {
         return false;
     }
 
-
-
-
     public void stopRecording() {
         if (mMediaRecorder != null){
             if(isRecording){
@@ -78,9 +71,6 @@ public class MyMediaRecorder {
             isRecording = false ;
         }
     }
-
-
-
 
     public void delete() {
         stopRecording();

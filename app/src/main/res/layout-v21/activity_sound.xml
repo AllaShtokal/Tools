@@ -14,15 +14,15 @@
         android:layout_weight="1">
 
 
-        <ImageButton
-            android:id="@+id/refreshbutton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="left|top"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="32dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/refresh" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/refreshbutton"-->
+<!--            android:layout_width="48dp"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:layout_gravity="left|top"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:src="@drawable/refresh" />-->
 
         <ImageButton
             android:layout_width="48dp"
