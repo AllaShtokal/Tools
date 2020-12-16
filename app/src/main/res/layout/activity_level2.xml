@@ -22,11 +22,6 @@
         android:layout_alignParentTop="true"
         />
 
-<!--    <com.shtokal.tools.levell.view.custom.LevelGraph-->
-<!--        android:id="@+id/custom_view_graph"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/custom_view_bubble"-->
-<!--        android:background="@color/colorLightBG" />-->
+
 
 </RelativeLayout>

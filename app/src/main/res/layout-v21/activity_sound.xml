@@ -24,17 +24,7 @@
 <!--            android:background="@android:color/transparent"-->
 <!--            android:src="@drawable/refresh" />-->
 
-        <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="54dp"
-            android:id="@+id/eggbutton"
-            android:layout_gravity="left|bottom"
-			android:src="@drawable/egg"
-            android:background="@android:color/transparent"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="16dp"
-			android:visibility="gone"
-            android:scaleType="fitCenter" />
+
     </FrameLayout>
 
     <LinearLayout

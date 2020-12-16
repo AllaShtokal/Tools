@@ -11,6 +11,5 @@ public class AppConstants {
 
     public static final int TYPE_PORTRAIT = 1;
     public static final int TYPE_LANDSCAPE = 2;
-    public static final int TYPE_FLAT = 3;
 
 }

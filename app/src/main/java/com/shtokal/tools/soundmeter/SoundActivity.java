@@ -2,7 +2,6 @@ package com.shtokal.tools.soundmeter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -22,9 +21,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.FillFormatter;
-import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.shtokal.tools.R;
 
 import java.io.File;
@@ -38,7 +34,6 @@ public class SoundActivity extends Activity {
     Speedometer speedometer;
     public static Typeface tf;
     ImageButton infoButton;
-   // ImageButton refreshButton;
     LineChart mChart;
     TextView minVal;
     TextView maxVal;
@@ -67,7 +62,6 @@ public class SoundActivity extends Activity {
                     initChart();
                     return;
                 }
-              //  speedometer.refresh();
                 minVal.setText(df1.format(World.minDB));
                 mmVal.setText(df1.format((World.minDB+World.maxDB)/2));
                 maxVal.setText(df1.format(World.maxDB));
@@ -105,36 +99,7 @@ public class SoundActivity extends Activity {
         mmVal=(TextView)findViewById(R.id.mmval);mmVal.setTypeface(tf);
         maxVal=(TextView)findViewById(R.id.maxval);maxVal.setTypeface(tf);
         curVal=(TextView)findViewById(R.id.curval);curVal.setTypeface(tf);
-        //infoButton=(ImageButton)findViewById(R.id.infobutton);
-//        infoButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                InfoDialog.Builder builder = new InfoDialog.Builder(SoundActivity.this);
-//                builder.setMessage(getString(R.string.activity_infobull));
-//                builder.setTitle(getString(R.string.activity_infotitle));
-//                builder.setNegativeButton(getString(R.string.activity_infobutton),
-//                        new android.content.DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                dialog.dismiss();
-//                            }
-//                        });
-//                builder.create().show();
-//            }
-//        });
-       // refreshButton=(ImageButton)findViewById(R.id.refreshbutton);
-//        refreshButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                refreshed=true;
-//                World.minDB=100;
-//                World.dbCount=0;
-//                World.lastDbCount=0;
-//                World.maxDB=0;
-//                initChart();
-//            }
-//        });
 
-      //speedometer=(Speedometer)findViewById(R.id.speed);
         mRecorder = new MyMediaRecorder();
     }
 
@@ -169,17 +134,12 @@ public class SoundActivity extends Activity {
             currentTime=new Date().getTime();
             mChart = (LineChart) findViewById(R.id.chart1);
             mChart.setViewPortOffsets(50, 20, 5, 60);
-            // no description text
             mChart.setDescription("");
-            // enable touch gestures
             mChart.setTouchEnabled(true);
-            // enable scaling and dragging
             mChart.setDragEnabled(false);
             mChart.setScaleEnabled(true);
-            // if disabled, scaling can be done on x- and y-axis separately
             mChart.setPinchZoom(false);
             mChart.setDrawGridBackground(false);
-            //mChart.setMaxHighlightDistance(400);
             XAxis x = mChart.getXAxis();
             x.setLabelCount(8, false);
             x.setEnabled(true);
@@ -204,20 +164,12 @@ public class SoundActivity extends Activity {
             set1.setValueTypeface(tf);
             set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             set1.setCubicIntensity(0.02f);
-//            set1.setDrawFilled(true);
             set1.setDrawCircles(false);
             set1.setCircleColor(Color.GREEN);
             set1.setHighLightColor(Color.rgb(244, 117, 117));
             set1.setColor(Color.GREEN);
-//            set1.setFillColor(Color.GREEN);
-//            set1.setFillAlpha(100);
             set1.setDrawHorizontalHighlightIndicator(false);
-//            set1.setFillFormatter(new FillFormatter() {
-//                @Override
-//                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
-//                    return -10;
-//                }
-//            });
+
             LineData data;
             if (mChart.getData() != null &&
                     mChart.getData().getDataSetCount() > 0) {
@@ -234,13 +186,11 @@ public class SoundActivity extends Activity {
             mChart.setData(data);
             mChart.getLegend().setEnabled(false);
             mChart.animateXY(2000, 2000);
-            // dont forget to refresh the drawing
             mChart.invalidate();
             isChart=true;
         }
 
     }
-    /* Sub-chant analysis */
     private void startListenAudio() {
         thread = new Thread(new Runnable() {
             @Override
@@ -248,10 +198,9 @@ public class SoundActivity extends Activity {
                 while (isThreadRun) {
                     try {
                         if(bListener) {
-                            volume = mRecorder.getMaxAmplitude();  //Get the sound pressure value
+                            volume = mRecorder.getMaxAmplitude();
                             if(volume > 0 && volume < 1000000) {
-                                World.setDbCount(20 * (float)(Math.log10(volume)));  //Change the sound pressure value to the decibel value
-                                // Update with thread
+                                World.setDbCount(20 * (float)(Math.log10(volume)));
                                 Message message = new Message();
                                 message.what = 1;
                                 handler.sendMessage(message);

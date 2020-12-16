@@ -1,7 +1,5 @@
 package com.shtokal.tools;
 
-import android.widget.ImageView;
-import android.widget.TextView;
 
 public class DetailsData {
     private String textTitle;

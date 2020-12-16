@@ -5,26 +5,15 @@ import android.os.Environment;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by bodekjan on 2016/8/8.
- */
 public class FileUtil {
     private static final String TAG = "FileUtil";
-
     public static final String LOCAL = "SoundMeter";
-
     public static final String LOCAL_PATH = Environment.getExternalStorageDirectory().getPath() + File.separator;
-
-    /**
-     * Recording file directory
-     */
-    public static final String REC_PATH = LOCAL_PATH + LOCAL + File.separator;
+      public static final String REC_PATH = LOCAL_PATH + LOCAL + File.separator;
 
 
 
-    /**
-     * Automatically create the relevant directory on the SD card
-     */
+
     static {
         File dirRootFile = new File(LOCAL_PATH);
         if (!dirRootFile.exists()) {
@@ -39,11 +28,7 @@ public class FileUtil {
     private FileUtil() {
     }
 
-    /**
-     * To determine whether there is storage space *
-     *
-     * @return
-     */
+
     public static boolean isExitSDCard() {
         return Environment.getExternalStorageState().equals(
                 Environment.MEDIA_MOUNTED);

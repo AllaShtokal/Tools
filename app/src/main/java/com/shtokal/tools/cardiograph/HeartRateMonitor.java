@@ -31,7 +31,9 @@ public class HeartRateMonitor extends Activity {
     private static View image = null;
     @SuppressLint("StaticFieldLeak")
     private static TextView text = null;
+
     private static WakeLock wakeLock = null;
+
     private static int averageIndex = 0;
     private static final int averageArraySize = 4;
     private static final int[] averageArray = new int[averageArraySize];
@@ -66,6 +68,7 @@ public class HeartRateMonitor extends Activity {
 
         image = findViewById(R.id.image);
         text = findViewById(R.id.text);
+
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
     }
@@ -81,7 +84,7 @@ public class HeartRateMonitor extends Activity {
     public void onResume() {
         super.onResume();
 
-        wakeLock.acquire(10*60*1000L /*10 minutes*/);
+        wakeLock.acquire(10*60*1000L );
 
         camera = Camera.open();
 
@@ -119,7 +122,7 @@ public class HeartRateMonitor extends Activity {
             int height = size.height;
 
             int imgAvg = ImageProcessing.decodeYUV420SPtoRedAvg(data.clone(), height, width);
-            // Log.i(TAG, "imgAvg="+imgAvg);
+
             if (imgAvg == 0 || imgAvg == 255) {
                 processing.set(false);
                 return;
@@ -137,11 +140,11 @@ public class HeartRateMonitor extends Activity {
             int rollingAverage = (averageArrayCnt > 0) ? (averageArrayAvg / averageArrayCnt) : 0;
             TYPE newType = currentType;
 
+
             if (imgAvg < rollingAverage) {
                 newType = TYPE.RED;
                 if (newType != currentType) {
                     beats++;
-                    // Log.d(TAG, "BEAT!! beats="+beats);
                 }
             } else if (imgAvg > rollingAverage) {
                 newType = TYPE.GREEN;
@@ -151,7 +154,6 @@ public class HeartRateMonitor extends Activity {
             averageArray[averageIndex] = imgAvg;
             averageIndex++;
 
-            // Transitioned from one state to another to the same
             if (newType != currentType) {
                 currentType = newType;
                 image.postInvalidate();
@@ -168,6 +170,7 @@ public class HeartRateMonitor extends Activity {
                     processing.set(false);
                     return;
                 }
+
 
                 if (beatsIndex == beatsArraySize) beatsIndex = 0;
                 beatsArray[beatsIndex] = dpm;
@@ -218,7 +221,7 @@ public class HeartRateMonitor extends Activity {
 
         @Override
         public void surfaceDestroyed(SurfaceHolder holder) {
-            // Ignore
+
         }
     };
 

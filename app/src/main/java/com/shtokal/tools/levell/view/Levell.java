@@ -54,11 +54,8 @@ public class Levell extends AppCompatActivity implements SensorEventListener {
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         rot = (TextView) findViewById(R.id.rotation);
         bubbleLevel = (BubbleLevel) findViewById(R.id.custom_view_bubble);
-       // levelGraph = (LevelGraph) findViewById(R.id.custom_view_graph);
 
         preferences = getSharedPreferences(AppConstants.APP_SHARED_PREF, Context.MODE_PRIVATE);
-
-        // setup device orientation change listener
         orientationEventListener = new OrientationEventListener(this, SENSOR_DELAY_TIME) {
             @Override
             public void onOrientationChanged(int orientation) {
@@ -81,7 +78,6 @@ public class Levell extends AppCompatActivity implements SensorEventListener {
             orientationEventListener.disable();
         }
 
-        //setup rotation sensor listener
         if (sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null) {
             bubbleSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             sensorManager.registerListener(this, bubbleSensor, SENSOR_DELAY_TIME);
@@ -93,27 +89,19 @@ public class Levell extends AppCompatActivity implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.values != null) {
-            //filtered sensor values
             filteredValues = getLowPassFilterValues(event.values, filteredValues);
             double xAxis = filteredValues[0];
             double yAxis = filteredValues[1];
             double zAxis = filteredValues[2];
-
-            //calculate pitch and roll angles
             double pitch = Math.atan(xAxis / Math.sqrt(Math.pow(yAxis, 2) + Math.pow(zAxis, 2)));
             double roll = Math.atan(yAxis / Math.sqrt(Math.pow(xAxis, 2) + Math.pow(zAxis, 2)));
 
             long roundedPitch = Math.round(Math.toDegrees(pitch));
             long roundedRoll = Math.round(Math.toDegrees(roll));
-            //store to array list in range [-10,10]
             SensorData sensorData = new SensorData();
             sensorData.setPitch(roundedPitch);
             sensorData.setRoll(roundedRoll);
-
-            //draw the bubble level
             bubbleLevel.drawBubbleView(sensorData, screenOrientation);
-            //draw the level graph
-            //levelGraph.drawLevelGraph(sensorData, screenOrientation);
 
             if (roundedPitch < MIN_RANGE) {
                 roundedPitch = MIN_RANGE;
@@ -132,7 +120,6 @@ public class Levell extends AppCompatActivity implements SensorEventListener {
         }
     }
 
-    //smooths the sensor data using low pass filter algorithm
     private float[] getLowPassFilterValues(float[] newValue, float[] oldValue) {
         if (oldValue == null) {
             return newValue;

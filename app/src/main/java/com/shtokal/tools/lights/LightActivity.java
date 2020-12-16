@@ -76,7 +76,7 @@ public class LightActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Hide notificationbar
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -84,14 +84,12 @@ public class LightActivity extends AppCompatActivity {
 
         initView();
 
-        // Change font
-        final Typeface regular = Typeface.createFromAsset(getAssets(), "montserrat.ttf");
-       // FontHelper.changeFont((ViewGroup) findViewById(R.id.home), regular);
 
-        // Check flash support
+        final Typeface regular = Typeface.createFromAsset(getAssets(), "montserrat.ttf");
+
         IsSupportFlash = checkFlashSupport();
 
-        // Set listener
+
         setListener();
 
         sharePreManager = new SharePreManager(this);
@@ -220,33 +218,28 @@ public class LightActivity extends AppCompatActivity {
 
         if (flashMode != TWINKLE_MODE) {
 
-            // Fade out
+
             fadeOut = new AlphaAnimation(1, 0);
             fadeOut.setInterpolator(new AccelerateInterpolator());
             fadeOut.setDuration(300);
 
-            // Add animation
             animation.addAnimation(fadeOut);
             twinkleSetting.setAnimation(animation);
 
             twinkleSetting.setVisibility(LinearLayout.GONE);
         } else {
 
-            // Show twinkle setting
+
             twinkleSetting.setVisibility(LinearLayout.VISIBLE);
 
-            // Fade in
             fadeIn = new AlphaAnimation(0, 1);
             fadeIn.setInterpolator(new DecelerateInterpolator());
             fadeIn.setDuration(1000);
 
-            // Add animation
             animation.addAnimation(fadeIn);
             twinkleSetting.setAnimation(animation);
 
-            // Set progress time
             delay = sbTwinkleTime.getProgress();
-            //sbTwinkleTime.setProgress(delay);
         }
     }
 
@@ -273,7 +266,6 @@ public class LightActivity extends AppCompatActivity {
 
     public void TurnOnFlashlight(int mode) {
 
-        // Stop blink thread if this is exist
         BlinkRunning = false;
 
         if (!IsSupportFlash)
@@ -366,15 +358,6 @@ public class LightActivity extends AppCompatActivity {
         } catch (CameraAccessException e) {
         }
 
-        /*if (camera == null)
-            camera = Camera.open();
-
-        if (camera != null) {
-            Camera.Parameters p = camera.getParameters();
-            p.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-            camera.setParameters(p);
-            camera.startPreview();
-        }*/
     }
 
     public void TurnOffFlash() {
@@ -386,15 +369,7 @@ public class LightActivity extends AppCompatActivity {
             }
         } catch (CameraAccessException e) {
         }
-        /*try {
-            if (camera != null) {
-                camera.stopPreview();
-                camera.release();
-                camera = null;
-            }
-        } catch (Exception e) {
-            Log.e("TURN OFF CAMERA", e.getMessage());
-        }*/
+
     }
 
     public void TurnOffFlashlight() {
@@ -469,10 +444,9 @@ public class LightActivity extends AppCompatActivity {
         if (!IsFlashlightOn || sharePreManager.isDontRemind())
             super.onBackPressed();
         else {
-            // Show dialog
             new AlertDialog.Builder(this)
                     .setTitle("Warning")
-                    .setMessage("If you press back button, a flashlight_icon will be off. Press the home button to make flashlight_icon is on")
+                    .setMessage("Press иет")
                     .setPositiveButton("DISCARD", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             sharePreManager.setRemindValue(sharePreManager.getRemindValue() + 1);
@@ -517,11 +491,9 @@ public class LightActivity extends AppCompatActivity {
 
                     cameraManager.setTorchMode(cameraId, flashMode);
                     flashMode=!flashMode;
-                    // Chuyen doi giua cac trang thai Flash
                     sleep(delay);
                 }
             } catch (Exception e) {
-                //Log.e("BLINK_THREAD", e.getMessage());
             }
         }
     }

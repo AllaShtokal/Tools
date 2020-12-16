@@ -15,8 +15,6 @@ import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 
 public class LineCharts {
-    private List<PointValue> values;
-    private List<Line> lines;
     private LineChartData lineChartData;
     private List<Line> linesList;
     private List<PointValue> pointValueList;
@@ -24,23 +22,22 @@ public class LineCharts {
     private int position = 0;
     private Axis axisY, axisX;
     protected void makeCharts(final LineChartView lineChartView,float uT){
-        //Add new points in real time
+
         PointValue value1 = new PointValue(position * 5, uT);
         value1.setLabel("00:00");
         pointValueList.add(value1);
         float x = value1.getX();
         float y = uT;
-        //Draw a new line based on the new set of points
+
         Line line = new Line(pointValueList);
         line.setColor(Color.RED);
         line.setShape(ValueShape.CIRCLE);
-        line.setCubic(true);//Whether the curve is smooth
-        line.setHasPoints(false);//Set whether the polyline contains points
+        line.setCubic(true);
+        line.setHasPoints(false);
         linesList.clear();
         linesList.add(line);
         lineChartData = initData(linesList);
         lineChartView.setLineChartData(lineChartData);
-        //Real-time transformation of the view range of coordinates according to the horizontal position of the point
         Viewport port;
         if (x > 500) {
                 port = initViewPort(x - 500, x, y);
@@ -57,7 +54,6 @@ public class LineCharts {
     protected void initView(LineChartView lineChartView) {
         pointValueList = new ArrayList<>();
         linesList = new ArrayList<>();
-        //Initialize the axis
         axisY = new Axis();
         axisX = new Axis();
         lineChartData = initData(null);
@@ -74,11 +70,6 @@ public class LineCharts {
         points = new ArrayList<>();
     }
 
-
-    /**
-    * Initialize chart data
-    * */
-
     protected LineChartData initData(List<Line> lines) {
         LineChartData data = new LineChartData(lines);
         data.setAxisYLeft(axisY);
@@ -86,18 +77,14 @@ public class LineCharts {
         return data;
     }
 
-    /**
-     * Maximum display area
-     */
+
     protected Viewport initMaxViewPort(float right,float top) {
         Viewport port = new Viewport();
         if(max > top){
             port.top = max + 150;
-           // Log.d("IF",max + "");
         }else {
             max = top;
             port.top = max + 150;
-           // Log.d("ELSE",max + "");
         }
         port.bottom = 0;
         port.left = 0;
@@ -105,20 +92,15 @@ public class LineCharts {
         return port;
     }
 
-    /**
-     * Current display area
-     */
-
-    float max = 150;//Maximum height, judge the value of max and top, refresh the y-axis of the chart in real time
+    float max = 150;
     protected Viewport initViewPort(float left, float right,float top) {
         Viewport port = new Viewport();
         if(max > top){
             port.top = max + 150;
-            // Log.d("IF",max + "");
+
         }else {
             max = top;
             port.top = max + 150;
-            //Log.d("ELSE",max + "");
         }
         port.bottom = 0;
         port.left = left;

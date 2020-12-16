@@ -45,38 +45,31 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
         mMainView = findViewById(R.id.compass_layout);
         mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
 
-       // mGreetingTextView = findViewById(R.id.tv_greeting);
-       //mGreetingTextView.setText(R.string.standard_greeting);
         findViewById(R.id.iv_location).setOnClickListener(this);
 
-     //   mPositionTextView = findViewById(R.id.tv_position);
-
-        Bundle bundle = getIntent().getExtras();
+          Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey(BACKGROUND) && bundle.containsKey(GREETING_MESSAGE) && bundle.containsKey(LOCATION)) {
             int background = bundle.getInt(BACKGROUND);
             int greetingMessage = bundle.getInt(GREETING_MESSAGE);
 
             if (background != -1 && greetingMessage != -1) {
                 mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), background));
-               // mGreetingTextView.setText(greetingMessage);
+
 
                 Location location = bundle.getParcelable(LOCATION);
                 if (location != null) {
-                   // mPositionTextView.setVisibility(View.VISIBLE);
-                   // mPositionTextView.setText(AppUtils.convert(location.getLatitude(), location.getLongitude()));
+
                 } else {
-                  //  mPositionTextView.setVisibility(View.GONE);
                 }
             } else {
                 mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
-               // mGreetingTextView.setText(R.string.standard_greeting);
+
             }
         } else {
             mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
-           // mGreetingTextView.setText(R.string.standard_greeting);
+
         }
     }
-
 
     @SuppressLint("MissingPermission")
     private void initialize() {
@@ -100,8 +93,7 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
                     public void onSuccess(Location location) {
                         if (location != null) {
                             updateDayState(location);
-                          //  mPositionTextView.setVisibility(View.VISIBLE);
-                          //  mPositionTextView.setText(AppUtils.convert(location.getLatitude(), location.getLongitude()));
+
                         }
                     }
                 });}
@@ -140,25 +132,10 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
 
         Date midNight = calendar1.getTime();
 
-        if (current.after(midNight)) {
-            mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_night));
-           // mGreetingTextView.setText(R.string.night_greeting);
 
-            if (current.after(sunrise)) {
-                mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_morning));
-               // mGreetingTextView.setText(R.string.morning_greeting);
+            mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
 
-                if (current.after(noon)) {
-                    mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_evening));
-                 //   mGreetingTextView.setText(R.string.afternoon_greeting);
 
-                    if (current.after(sunset)) {
-                        mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_night));
-                     //   mGreetingTextView.setText(R.string.night_greeting);
-                    }
-                }
-            }
-        }
 
     }
 
@@ -182,7 +159,7 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
     private void askForLocationDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.location_dialog_title);
-        builder.setMessage(R.string.allow_location_permission);
+        builder.setMessage("allow location permission");
         builder.setPositiveButton(
                 R.string.allow, new DialogInterface.OnClickListener() {
                     @Override
@@ -202,10 +179,13 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
         builder.show();
     }
 
+    /**
+     *
+     */
     private void locationProvidedDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.location_on_title);
-        builder.setMessage(R.string.location_permission_allowed);
+        builder.setTitle("Location");
+        builder.setMessage("location permission allowed");
         builder.setPositiveButton(
                 R.string.ok, new DialogInterface.OnClickListener() {
                     @Override

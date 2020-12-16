@@ -25,7 +25,6 @@ import lecho.lib.hellocharts.view.LineChartView;
 
 
 public class MetalActivity extends AppCompatActivity implements SensorEventListener{
-    final String TAG = "MetalDetector";
     private TextView mTextX;
     private TextView mTextY;
     private TextView mTextZ;
@@ -43,7 +42,7 @@ public class MetalActivity extends AppCompatActivity implements SensorEventListe
         setContentView(R.layout.activity_metaldetector);
         initFunc();//Initialize all controls
         if(new Common().readSharedPreferencesByBool("tip")){
-          //  new Common().showSnackBar(getWindow().getDecorView().getRootView());
+
         }
 
                 if(!new Common().isMagneticSensorAvailable()){
@@ -54,10 +53,9 @@ public class MetalActivity extends AppCompatActivity implements SensorEventListe
     @Override
     protected void onResume() {
         super.onResume();
-        // Instantiate sensor management
+
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        //Register the magnetic sensor listener
-        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_NORMAL);
+         sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_NORMAL);
 
     }
 
@@ -72,14 +70,13 @@ public class MetalActivity extends AppCompatActivity implements SensorEventListe
             }else{
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }
-            //Calculate the three-axis magnetic induction intensity separately
+
             float X_lateral = sensorEvent.values[0];
             float Y_lateral = sensorEvent.values[1];
             float Z_lateral = sensorEvent.values[2];
-            //Log.d(TAG,X_lateral + "");
-            //Calculate the total magnetic induction intensity
+
             rawTotal = Math.sqrt(X_lateral * X_lateral + Y_lateral * Y_lateral + Z_lateral * Z_lateral);
-            //Initialize the BigDecimal class
+
             BigDecimal total = new BigDecimal(rawTotal);
             double res = total.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue();
             lineCharts.makeCharts(lineChart,(float) res);//Real-time drawing
@@ -88,14 +85,14 @@ public class MetalActivity extends AppCompatActivity implements SensorEventListe
             mTextZ.setText(Z_lateral + " μT");
             mTotal.setText( res + " μT");
             String alarmLimStr = new Common().readSharedPreferencesByString("alarm_limit");
-            //Prevent user's illegal input from causing software crash and affecting experience
+
             if(!alarmLimStr.isEmpty()){
                 alarmLim = Double.valueOf(alarmLimStr);
             }else {
                 alarmLim = 80;
             }
             if (res < alarmLim){
-                metalState.setTextColor(Color.rgb(0,0,0));//Set text color to black
+                metalState.setTextColor(Color.rgb(0,0,0));
                 metalState.setText("No metal detected");
                 int progress = (int)((res / alarmLim )* 100);//Calculation progress
                 progressView.setReachBarColor(Color.rgb(30,144,255));
@@ -143,8 +140,7 @@ public class MetalActivity extends AppCompatActivity implements SensorEventListe
     }
 
     private void initFunc(){
-       // toolbar = (Toolbar) findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
+
         mTextX = (TextView)findViewById(R.id.x);
         mTextY = (TextView)findViewById(R.id.y);
         mTextZ = (TextView)findViewById(R.id.z);
