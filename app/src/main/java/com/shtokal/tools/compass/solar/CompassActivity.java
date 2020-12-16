@@ -38,9 +38,7 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     private View mMainView;
-    private TextView mGreetingTextView;
 
-    private TextView mPositionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,48 +47,35 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
         initializeView();
     }
 
-    /**
-     *
-     */
     private void initializeView() {
         mMainView = findViewById(R.id.compass_layout);
         mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
 
-       // mGreetingTextView = findViewById(R.id.tv_greeting);
-       //mGreetingTextView.setText(R.string.standard_greeting);
         findViewById(R.id.iv_location).setOnClickListener(this);
 
-     //   mPositionTextView = findViewById(R.id.tv_position);
-
-        Bundle bundle = getIntent().getExtras();
+          Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey(BACKGROUND) && bundle.containsKey(GREETING_MESSAGE) && bundle.containsKey(LOCATION)) {
             int background = bundle.getInt(BACKGROUND);
             int greetingMessage = bundle.getInt(GREETING_MESSAGE);
 
             if (background != -1 && greetingMessage != -1) {
                 mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), background));
-               // mGreetingTextView.setText(greetingMessage);
+
 
                 Location location = bundle.getParcelable(LOCATION);
                 if (location != null) {
-                   // mPositionTextView.setVisibility(View.VISIBLE);
-                   // mPositionTextView.setText(AppUtils.convert(location.getLatitude(), location.getLongitude()));
+
                 } else {
-                  //  mPositionTextView.setVisibility(View.GONE);
                 }
             } else {
                 mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
-               // mGreetingTextView.setText(R.string.standard_greeting);
+
             }
         } else {
             mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
-           // mGreetingTextView.setText(R.string.standard_greeting);
+
         }
     }
-
-    /**
-     *
-     */
 
     @SuppressLint("MissingPermission")
     private void initialize() {
@@ -114,8 +99,7 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
                     public void onSuccess(Location location) {
                         if (location != null) {
                             updateDayState(location);
-                          //  mPositionTextView.setVisibility(View.VISIBLE);
-                          //  mPositionTextView.setText(AppUtils.convert(location.getLatitude(), location.getLongitude()));
+
                         }
                     }
                 });}
@@ -156,19 +140,18 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
 
         if (current.after(midNight)) {
             mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_night));
-           // mGreetingTextView.setText(R.string.night_greeting);
+
 
             if (current.after(sunrise)) {
                 mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_morning));
-               // mGreetingTextView.setText(R.string.morning_greeting);
+
 
                 if (current.after(noon)) {
                     mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_evening));
-                 //   mGreetingTextView.setText(R.string.afternoon_greeting);
 
                     if (current.after(sunset)) {
                         mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_night));
-                     //   mGreetingTextView.setText(R.string.night_greeting);
+
                     }
                 }
             }

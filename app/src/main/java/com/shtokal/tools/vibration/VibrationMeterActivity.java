@@ -40,17 +40,12 @@ public class VibrationMeterActivity extends Activity implements SensorEventListe
     long currentTime=0;
     long savedTime=0;
     boolean isChart=false;
-
-    int interval= 5000; // read sensor data each 1000 ms
+    int interval= 5000;
     boolean flag = false;
-
     private final Runnable processSensors = new Runnable() {
         @Override
         public void run() {
-            // Do work with the sensor values.
-
             flag = true;
-            // The Runnable is posted to run again here:
             handler.postDelayed(this, interval);
         }
     };
@@ -107,13 +102,6 @@ public class VibrationMeterActivity extends Activity implements SensorEventListe
             vibration.setText(String.valueOf(vibrationValue));
             vibration2.setText(String.valueOf(vibrationValue2));
             updateData(vibrationValuef2,0);
-//            TextView xValue = (TextView) findViewById(R.id.x);
-//            TextView yValue = (TextView) findViewById(R.id.y);
-//            TextView zValue = (TextView) findViewById(R.id.z);
-//
-//            xValue.setText(String.valueOf(x));
-//            yValue.setText(String.valueOf(y));
-//            zValue.setText(String.valueOf(z));
 
         }
     }
@@ -128,17 +116,12 @@ public class VibrationMeterActivity extends Activity implements SensorEventListe
             currentTime=new Date().getTime();
             mChart = (LineChart) findViewById(R.id.chart1);
             mChart.setViewPortOffsets(50, 20, 5, 60);
-            // no description text
             mChart.setDescription("");
-            // enable touch gestures
             mChart.setTouchEnabled(true);
-            // enable scaling and dragging
             mChart.setDragEnabled(false);
             mChart.setScaleEnabled(true);
-            // if disabled, scaling can be done on x- and y-axis separately
             mChart.setPinchZoom(false);
             mChart.setDrawGridBackground(false);
-            //mChart.setMaxHighlightDistance(400);
             XAxis x = mChart.getXAxis();
             x.setLabelCount(8, false);
             x.setEnabled(true);
@@ -168,15 +151,8 @@ public class VibrationMeterActivity extends Activity implements SensorEventListe
             set1.setCircleColor(Color.GREEN);
             set1.setHighLightColor(Color.rgb(244, 117, 117));
             set1.setColor(Color.RED);
-            //set1.setFillColor(Color.GREEN);
-            //set1.setFillAlpha(100);
             set1.setDrawHorizontalHighlightIndicator(false);
-//            set1.setFillFormatter(new FillFormatter() {
-//                @Override
-//                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
-//                    return -10;
-//                }
-//            });
+
             LineData data;
             if (mChart.getData() != null &&
                     mChart.getData().getDataSetCount() > 0) {
@@ -193,7 +169,6 @@ public class VibrationMeterActivity extends Activity implements SensorEventListe
             mChart.setData(data);
             mChart.getLegend().setEnabled(false);
             mChart.animateXY(2000, 2000);
-            // dont forget to refresh the drawing
             mChart.invalidate();
             isChart=true;
         }

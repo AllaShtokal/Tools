@@ -45,9 +45,7 @@ public class RulerView extends View {
     private float pointerStrokeWidth;
     private int pointerColor;
 
-    /**
-     * Creates a new RulerView.
-     */
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public RulerView(Context context) {
         this(context, null);

@@ -44,14 +44,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
-        // bind the textview with data received
         DetailsData item = data.get(i);
         viewHolder.textTitle.setText(item.getTextTitle());
         viewHolder.textDescription.setText(item.getTextDescription());
         viewHolder.imageView.setImageResource(item.getImage());
-
-        // similarly you can set new image for each card and descriptions
 
     }
 

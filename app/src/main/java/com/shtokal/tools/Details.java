@@ -25,7 +25,6 @@ public class Details extends AppCompatActivity {
         textTitle = findViewById(R.id.detailTitle);
         textTitle.setText(title);
 
-        //imageView.setImageResource(R.drawable.flashlight_icon);
 
 
 

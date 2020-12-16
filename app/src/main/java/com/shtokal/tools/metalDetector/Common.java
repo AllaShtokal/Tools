@@ -34,22 +34,6 @@ public class Common {
         return vibrate;
     }
 
-
-    public void writeSharedPreferencesByBool(String key,Boolean val){
-        SharedPreferences sp = context.getSharedPreferences("com.shtokal.tools.metalDetector",MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean(key,val);
-        editor.commit();
-    }
-
-    public void writeSharedPreferencesByString(String key,String val){
-        SharedPreferences sp = context.getSharedPreferences("com.shtokal.tools.metalDetector",MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putString(key,val);
-        editor.commit();
-    }
-
-
     public Boolean readSharedPreferencesByBool(String key){
         SharedPreferences sp = context.getSharedPreferences("com.shtokal.tools.metalDetector",MODE_PRIVATE);
         Boolean res = sp.getBoolean(key,true);
@@ -69,15 +53,6 @@ public class Common {
     }
 
 
-    public void showSnackBar(View view){
-        Snackbar.make(view,"It is recommended to click on the gear to see the introduction",
-                Snackbar.LENGTH_LONG).setAction("Do not remind again", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // writeSharedPreferencesByBool("tip",false);
-            }
-        }).show();
-    }
 
     public void showDialog(Context context){
         final AlertDialog alertDialog = new AlertDialog.Builder(context)

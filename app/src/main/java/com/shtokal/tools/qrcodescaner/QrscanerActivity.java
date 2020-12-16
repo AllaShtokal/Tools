@@ -103,13 +103,6 @@ public class QrscanerActivity extends AppCompatActivity {
                     }
                 });
 
-//        builder.setNegativeButton(
-//                "CANCEL",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.cancel();
-//                    }
-//                });
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();

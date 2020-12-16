@@ -16,12 +16,6 @@ public class SharePreManager {
         editor = sharePre.edit();
     }
 
-    public boolean isFirstLaunch() {
-        if (sharePre.contains(IS_FIRST_LAUNCH))
-            return sharePre.getBoolean(IS_FIRST_LAUNCH, false);
-
-        return true;
-    }
 
     public void setRemindValue(int value) {
         editor.putInt(DONT_REMIND_AGAIN, value);

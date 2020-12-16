@@ -13,9 +13,7 @@ import android.widget.ImageView;
 import com.shtokal.tools.MainActivity;
 import com.shtokal.tools.R;
 
-/**
- * Created by bodekjan on 2016/8/8.
- */
+
 public class Speedometer extends ImageView {
 
     private float scaleWidth, scaleHeight;

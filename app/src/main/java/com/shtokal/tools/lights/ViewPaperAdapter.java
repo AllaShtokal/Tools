@@ -12,10 +12,6 @@ public class ViewPaperAdapter extends PagerAdapter {
     private int[] layouts;
     private Context context;
 
-    public ViewPaperAdapter(Context contexts, int[] layouts) {
-        this.layouts = layouts;
-        this.context = contexts;
-    }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {

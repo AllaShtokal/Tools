@@ -21,20 +21,19 @@ public class WhiteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Hide notificationbar
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_white);
 
-        // Make screen always is on
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         sharePreManager = new SharePreManager(this);
         bv = sharePreManager.getBrightnessValue();
 
-        // Make max brightness
+
         setScreenBrightness(bv);
 
         btnBack = (RelativeLayout) findViewById(R.id.btnBack);
@@ -79,7 +78,6 @@ public class WhiteActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Clear screen always is on
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         finish();
         super.onBackPressed();

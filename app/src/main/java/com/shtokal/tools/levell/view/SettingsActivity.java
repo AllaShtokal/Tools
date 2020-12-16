@@ -33,10 +33,8 @@ public class SettingsActivity extends AppCompatActivity {
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         tv_seekbar_val = (TextView) findViewById(R.id.tv_seekbar_val);
         switch_vibrate = (Switch) findViewById(R.id.switch_vibrate);
-       // switch_tilt_angle = (Switch) findViewById(R.id.switch_tilt_angle);
         seekBar.setMax(AppConstants.MAX_RANGE);
 
-        //get value from shared preference and pre-set
         preferences = this.getSharedPreferences(AppConstants.APP_SHARED_PREF, Context.MODE_PRIVATE);
         editor = preferences.edit();
         int progress = preferences.getInt(AppConstants.SHARED_PREF_KEY_TOLERANCE_LEVEL, 5);
@@ -47,13 +45,13 @@ public class SettingsActivity extends AppCompatActivity {
         switch_vibrate.setChecked(isVibration);
 
         boolean isTiltAngle = preferences.getBoolean(AppConstants.SHARED_PREF_KEY_IS_TILT_ANGLE, true);
-//        switch_tilt_angle.setChecked(isTiltAngle);
+
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 tv_seekbar_val.setText("+/- " + progress);
-                //save to shared preference
+
                 editor.putInt(AppConstants.SHARED_PREF_KEY_TOLERANCE_LEVEL, progress);
                 editor.commit();
             }
