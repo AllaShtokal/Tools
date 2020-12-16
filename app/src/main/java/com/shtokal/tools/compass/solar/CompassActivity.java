@@ -138,24 +138,10 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
 
         Date midNight = calendar1.getTime();
 
-        if (current.after(midNight)) {
-            mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_night));
+
+            mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_default));
 
 
-            if (current.after(sunrise)) {
-                mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_morning));
-
-
-                if (current.after(noon)) {
-                    mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_evening));
-
-                    if (current.after(sunset)) {
-                        mMainView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_night));
-
-                    }
-                }
-            }
-        }
 
     }
 
@@ -179,7 +165,7 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
     private void askForLocationDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.location_dialog_title);
-        builder.setMessage(R.string.allow_location_permission);
+        builder.setMessage("allow location permission");
         builder.setPositiveButton(
                 R.string.allow, new DialogInterface.OnClickListener() {
                     @Override
@@ -204,8 +190,8 @@ public class CompassActivity extends AppCompatActivity implements View.OnClickLi
      */
     private void locationProvidedDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.location_on_title);
-        builder.setMessage(R.string.location_permission_allowed);
+        builder.setTitle("Location");
+        builder.setMessage("location permission allowed");
         builder.setPositiveButton(
                 R.string.ok, new DialogInterface.OnClickListener() {
                     @Override

@@ -37,7 +37,6 @@
         <activity android:name=".cardiograph.HeartRateMonitor" />
         <activity android:name=".qrcodescaner.QrscanerActivity" />
         <activity android:name=".soundmeter.SoundActivity" />
-        <activity android:name=".acceleromter.Accelerometer" />
         <activity android:name=".vibration.VibrationMeterActivity" />
 
         <activity android:name=".Details">
